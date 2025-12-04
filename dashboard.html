@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="dash-container">
+    <h1>Welcome back, <span id="user-name"></span> 👋</h1>
+    <p>Email: <span id="user-email"></span></p>
+    <p>Skill Level: <span id="user-skill"></span></p>
+    <p>Bio: <span id="user-bio"></span></p>
+
+    <button class="btn" id="createProjectBtn">Create Project</button>
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="projectModal">
+    <div class="modal-box">
+        <h2>Project Created 🎉</h2>
+        <button class="btn" onclick="closeModal()">Close</button>
+    </div>
+</div>
+
+<script>
+// Load saved data
+document.getElementById("user-name").innerText = localStorage.getItem("name");
+document.getElementById("user-email").innerText = localStorage.getItem("email");
+document.getElementById("user-skill").innerText = localStorage.getItem("skill");
+document.getElementById("user-bio").innerText = localStorage.getItem("bio");
+
+// Modal logic
+document.getElementById("createProjectBtn").onclick = function() {
+    document.getElementById("projectModal").style.display = "flex";
+};
+
+function closeModal() {
+    document.getElementById("projectModal").style.display = "none";
+}
+</script>
+
+</body>
+</html>
