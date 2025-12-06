@@ -36,16 +36,43 @@
 function goToDashboard(event) {
     event.preventDefault();
 
+<script>
+function goToDashboard(event) {
+    event.preventDefault();
+
+    // Get values
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const skill = document.getElementById("skill").value;
+    const bio = document.getElementById("bio").value.trim();
+
+    // Validation
+    if (name.length < 3) {
+        alert("Please enter a valid name (at least 3 characters).");
+        return;
+    }
+
+    // Simple email regex
+    const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+    if (!emailRegex.test(email)) {
+        alert("Please enter a valid email address.");
+        return;
+    }
+
+    if (bio.length < 10) {
+        alert("Bio must be at least 10 characters long.");
+        return;
+    }
+
     // Save data
-    localStorage.setItem("name", document.getElementById("name").value);
-    localStorage.setItem("email", document.getElementById("email").value);
-    localStorage.setItem("skill", document.getElementById("skill").value);
-    localStorage.setItem("bio", document.getElementById("bio").value);
+    localStorage.setItem("name", name);
+    localStorage.setItem("email", email);
+    localStorage.setItem("skill", skill);
+    localStorage.setItem("bio", bio);
 
     // Redirect
     window.location.href = "dashboard.html";
 }
-</script>
 
 </body>
 </html>
